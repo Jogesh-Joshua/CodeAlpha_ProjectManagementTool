@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit — Project Kanban Board</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/projects.css" />
+  <link rel="stylesheet" href="/css/board.css" />
+</head>
+<body>
+  <div class="workspace-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="/projects" class="sidebar-logo">
+          <div class="logo-icon">🪐</div>
+          <span>Orbit</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Workspace</div>
+        <a href="/dashboard" class="nav-link">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="/projects" class="nav-link active">
+          <span class="nav-icon">📁</span>
+          <span>Projects</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-info">
+          <div id="user-avatar" class="user-avatar-pill">?</div>
+          <div class="user-meta">
+            <span id="user-name" class="user-meta-name">Loading...</span>
+            <span id="user-email" class="user-meta-email">...</span>
+          </div>
+        </div>
+        <button id="logout-btn" class="btn-icon-logout" title="Sign Out" type="button">⏻</button>
+      </div>
+    </aside>
+
+    <!-- Main Board Viewport -->
+    <div class="board-viewport">
+      <!-- Board Header -->
+      <header class="board-header">
+        <div class="board-title-group">
+          <nav class="board-breadcrumb">
+            <a href="/projects">Projects</a>
+            <span>/</span>
+            <span id="breadcrumb-project-name">Loading...</span>
+            <span>/</span>
+            <span>Kanban Board</span>
+          </nav>
+          <div class="board-heading-row">
+            <div id="project-color-badge" class="project-color-badge" style="background-color: #5B5BD6;"></div>
+            <h1 id="board-project-title" class="board-title">Project Board</h1>
+          </div>
+        </div>
+
+        <div class="board-controls">
+          <input
+            type="text"
+            id="board-search-input"
+            class="board-search-input"
+            placeholder="Search tasks..."
+          />
+
+          <select id="board-priority-filter" class="filter-select">
+            <option value="">All Priorities</option>
+            <option value="critical">Critical</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+
+          <a id="btn-project-members" href="#" class="btn-secondary" title="View Project Team">
+            <span>👥</span> Members
+          </a>
+
+          <button id="btn-open-create-task" class="btn-primary" type="button">
+            <span>+</span> New Task
+          </button>
+        </div>
+      </header>
+
+      <!-- 4 Kanban Columns -->
+      <main class="kanban-board-container">
+        <!-- To Do Column -->
+        <section class="kanban-column" data-status="todo" id="column-todo">
+          <div class="column-header">
+            <div class="column-header-left">
+              <span class="column-status-indicator todo"></span>
+              <span class="column-title">To Do</span>
+              <span class="column-count-badge" id="count-todo">0</span>
+            </div>
+            <button class="btn-add-task-column" data-status="todo" title="Add task to To Do" type="button">+</button>
+          </div>
+          <div class="column-cards-list" data-status="todo" id="cards-todo">
+            <!-- Cards populated dynamically -->
+          </div>
+        </section>
+
+        <!-- In Progress Column -->
+        <section class="kanban-column" data-status="in_progress" id="column-in-progress">
+          <div class="column-header">
+            <div class="column-header-left">
+              <span class="column-status-indicator in_progress"></span>
+              <span class="column-title">In Progress</span>
+              <span class="column-count-badge" id="count-in_progress">0</span>
+            </div>
+            <button class="btn-add-task-column" data-status="in_progress" title="Add task to In Progress" type="button">+</button>
+          </div>
+          <div class="column-cards-list" data-status="in_progress" id="cards-in_progress">
+            <!-- Cards populated dynamically -->
+          </div>
+        </section>
+
+        <!-- Review Column -->
+        <section class="kanban-column" data-status="review" id="column-review">
+          <div class="column-header">
+            <div class="column-header-left">
+              <span class="column-status-indicator review"></span>
+              <span class="column-title">Review</span>
+              <span class="column-count-badge" id="count-review">0</span>
+            </div>
+            <button class="btn-add-task-column" data-status="review" title="Add task to Review" type="button">+</button>
+          </div>
+          <div class="column-cards-list" data-status="review" id="cards-review">
+            <!-- Cards populated dynamically -->
+          </div>
+        </section>
+
+        <!-- Done Column -->
+        <section class="kanban-column" data-status="done" id="column-done">
+          <div class="column-header">
+            <div class="column-header-left">
+              <span class="column-status-indicator done"></span>
+              <span class="column-title">Done</span>
+              <span class="column-count-badge" id="count-done">0</span>
+            </div>
+            <button class="btn-add-task-column" data-status="done" title="Add task to Done" type="button">+</button>
+          </div>
+          <div class="column-cards-list" data-status="done" id="cards-done">
+            <!-- Cards populated dynamically -->
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Create Task Modal -->
+  <div id="create-task-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title">Create New Task</h2>
+        <button id="btn-close-create-task" class="btn-close-modal" type="button">&times;</button>
+      </div>
+
+      <div id="create-task-feedback" class="feedback-banner"></div>
+
+      <form id="create-task-form">
+        <input type="hidden" id="task-status-target" value="todo" />
+
+        <div class="form-group">
+          <label class="form-label" for="task-title-input">Title *</label>
+          <input
+            type="text"
+            id="task-title-input"
+            class="form-input"
+            placeholder="e.g. Build authentication endpoints"
+            maxlength="255"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="task-desc-input">Description</label>
+          <textarea
+            id="task-desc-input"
+            class="form-textarea"
+            placeholder="Detailed requirements or acceptance criteria..."
+            maxlength="10000"
+          ></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="task-priority-select">Priority</label>
+            <select id="task-priority-select" class="form-input">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+              <option value="critical">Critical</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="task-due-date-input">Due Date</label>
+            <input
+              type="date"
+              id="task-due-date-input"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Assignees (Project Members)</label>
+          <div id="create-assignee-checklist" class="assignee-checklist">
+            <!-- Populated with project members -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btn-cancel-create-task" class="btn-secondary" type="button">Cancel</button>
+          <button id="btn-submit-create-task" class="btn-primary" type="submit">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div id="edit-task-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title">Edit Task</h2>
+        <button id="btn-close-edit-task" class="btn-close-modal" type="button">&times;</button>
+      </div>
+
+      <div id="edit-task-feedback" class="feedback-banner"></div>
+
+      <form id="edit-task-form">
+        <input type="hidden" id="edit-task-id" />
+
+        <div class="form-group">
+          <label class="form-label" for="edit-task-title">Title *</label>
+          <input
+            type="text"
+            id="edit-task-title"
+            class="form-input"
+            maxlength="255"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="edit-task-desc">Description</label>
+          <textarea
+            id="edit-task-desc"
+            class="form-textarea"
+            maxlength="10000"
+          ></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="edit-task-priority">Priority</label>
+            <select id="edit-task-priority" class="form-input">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              <option value="critical">Critical</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-task-due-date">Due Date</label>
+            <input
+              type="date"
+              id="edit-task-due-date"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Assignees (Project Members)</label>
+          <div id="edit-assignee-checklist" class="assignee-checklist">
+            <!-- Populated with project members -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btn-cancel-edit-task" class="btn-secondary" type="button">Cancel</button>
+          <button id="btn-submit-edit-task" class="btn-primary" type="submit">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Task Detail Slide-over / Modal -->
+  <div id="task-detail-modal" class="modal-overlay">
+    <div class="modal-box task-detail-modal-box">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span id="detail-priority-badge" class="priority-pill medium">Medium</span>
+          <span id="detail-status-badge" class="role-badge member">To Do</span>
+        </div>
+        <button id="btn-close-task-detail" class="btn-close-modal" type="button">&times;</button>
+      </div>
+
+      <h2 id="detail-task-title" style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.25rem;">Task Title</h2>
+
+      <div class="task-detail-meta-grid">
+        <div class="detail-meta-item">
+          <span class="detail-meta-label">Created By</span>
+          <span id="detail-creator-val" class="detail-meta-val">...</span>
+        </div>
+        <div class="detail-meta-item">
+          <span class="detail-meta-label">Due Date</span>
+          <span id="detail-due-val" class="detail-meta-val">None</span>
+        </div>
+        <div class="detail-meta-item">
+          <span class="detail-meta-label">Assignees</span>
+          <span id="detail-assignees-val" class="detail-meta-val">Unassigned</span>
+        </div>
+        <div class="detail-meta-item">
+          <span class="detail-meta-label">Last Updated</span>
+          <span id="detail-updated-val" class="detail-meta-val">...</span>
+        </div>
+      </div>
+
+      <div class="detail-description-block">
+        <h4>Description</h4>
+        <div id="detail-desc-content" class="detail-desc-content">No description provided.</div>
+      </div>
+
+      <!-- Active Comments & Discussion Section -->
+      <div class="detail-comments-section">
+        <div class="comments-header-row">
+          <div class="comments-header-title">
+            <span>💬</span> Comments & Discussion
+            <span id="comments-count-pill" class="column-count-badge">0</span>
+          </div>
+        </div>
+
+        <div id="comment-feedback" class="feedback-banner"></div>
+
+        <div id="task-comments-list" class="comments-list">
+          <!-- Populated dynamically: loading, empty state, or comment cards -->
+        </div>
+
+        <div class="comment-form-wrap">
+          <textarea
+            id="comment-input"
+            class="comment-form-textarea"
+            placeholder="Write a comment or update... (Press Ctrl+Enter to post)"
+            maxlength="10000"
+          ></textarea>
+          <div style="display: flex; justify-content: flex-end;">
+            <button id="btn-submit-comment" class="btn-primary" type="button">Post Comment</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="margin-top: 1.5rem;">
+        <button id="btn-edit-from-detail" class="btn-secondary" type="button">Edit Task</button>
+        <button id="btn-delete-from-detail" class="btn-secondary" style="color: #F87171; border-color: rgba(239,68,68,0.3);" type="button">Delete Task</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/board.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+/* Orbit — Base styles (Phase 0 scaffold) */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--orbit-slate-100);
+  color: var(--orbit-slate-900);
+}

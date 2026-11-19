@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit — Project Team Members</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/projects.css" />
+  <link rel="stylesheet" href="/css/members.css" />
+</head>
+<body>
+  <div class="workspace-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="/projects" class="sidebar-logo">
+          <div class="logo-icon">🪐</div>
+          <span>Orbit</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Workspace</div>
+        <a href="/dashboard" class="nav-link">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="/projects" class="nav-link active">
+          <span class="nav-icon">📁</span>
+          <span>Projects</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-info">
+          <div id="user-avatar" class="user-avatar-pill">?</div>
+          <div class="user-meta">
+            <span id="user-name" class="user-meta-name">Loading...</span>
+            <span id="user-email" class="user-meta-email">...</span>
+          </div>
+        </div>
+        <button id="logout-btn" class="btn-icon-logout" title="Sign Out" type="button">⏻</button>
+      </div>
+    </aside>
+
+    <!-- Main Viewport -->
+    <div class="main-viewport">
+      <div class="members-container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav">
+          <a href="/projects" class="breadcrumb-link">Projects</a>
+          <span class="breadcrumb-separator">/</span>
+          <span id="breadcrumb-project-name" class="breadcrumb-current">...</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Team Members</span>
+        </nav>
+
+        <!-- Project Summary Header Banner -->
+        <header id="project-header" class="project-summary-header">
+          <div class="project-header-left">
+            <div id="project-icon-box" class="project-icon-box" style="background-color: #5B5BD6;">
+              📁
+            </div>
+            <div class="project-header-meta">
+              <h1 id="project-title-heading">Loading Project...</h1>
+              <p id="project-desc-text">Fetching workspace details...</p>
+            </div>
+          </div>
+
+          <div class="project-header-stats">
+            <div class="header-stat-item">
+              <span id="stat-member-count" class="header-stat-value">0</span>
+              <span class="header-stat-label">Total Members</span>
+            </div>
+            <div class="header-stat-item">
+              <span id="stat-task-count" class="header-stat-value">0</span>
+              <span class="header-stat-label">Tasks</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Add Member Section (Visible to Owner & Admin) -->
+        <section id="add-member-section" class="add-member-card" style="display: none;">
+          <h3>Invite Team Member</h3>
+          <p>Add registered Orbit users to this project to assign tasks and collaborate.</p>
+
+          <div id="add-member-feedback" class="feedback-banner"></div>
+
+          <form id="add-member-form" class="add-member-form">
+            <div class="input-with-autocomplete">
+              <input
+                type="email"
+                id="member-email-input"
+                class="add-member-input"
+                placeholder="Search registered user by email or name..."
+                autocomplete="off"
+                required
+              />
+              <div id="user-autocomplete-dropdown" class="autocomplete-dropdown">
+                <!-- Autocomplete suggestions -->
+              </div>
+            </div>
+
+            <select id="member-role-select" class="role-select">
+              <option value="member">Member (Can edit tasks & comment)</option>
+              <option value="admin">Admin (Can manage project & invite)</option>
+            </select>
+
+            <button id="btn-submit-add-member" class="btn-primary" type="submit">
+              + Add Member
+            </button>
+          </form>
+        </section>
+
+        <!-- Members Roster Table -->
+        <section class="members-table-wrapper">
+          <div class="table-header-title">
+            <span>Project Participants</span>
+            <span id="table-members-badge" class="members-count-badge">0 members</span>
+          </div>
+
+          <table class="members-table">
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Joined Date</th>
+                <th>Role</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="members-table-body">
+              <tr>
+                <td colspan="4" style="text-align: center; padding: 2rem; color: rgba(255,255,255,0.4);">
+                  Loading team members...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/members.js"></script>
+</body>
+</html>

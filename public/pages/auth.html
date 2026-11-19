@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit — Sign In or Register</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="auth-brand">
+      <a href="/" class="logo">🌌 Orbit</a>
+      <p class="tagline">Plan together. Build better. Move forward.</p>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-tabs" role="tablist">
+        <button id="tab-login" class="auth-tab active" type="button" role="tab">Sign In</button>
+        <button id="tab-register" class="auth-tab" type="button" role="tab">Create Account</button>
+      </div>
+
+      <div id="alert-banner" class="alert-banner" role="alert"></div>
+
+      <!-- Login Form -->
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input
+            id="login-email"
+            class="input-field"
+            type="email"
+            name="email"
+            placeholder="you@company.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <div class="input-wrapper">
+            <input
+              id="login-password"
+              class="input-field"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              required
+              autocomplete="current-password"
+            />
+            <button type="button" class="toggle-pwd-btn" data-target="login-password">Show</button>
+          </div>
+        </div>
+
+        <button id="login-submit-btn" class="submit-btn" type="submit">
+          <span>Sign In</span>
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" style="display: none;">
+        <div class="form-group">
+          <label for="register-name">Full Name</label>
+          <input
+            id="register-name"
+            class="input-field"
+            type="text"
+            name="name"
+            placeholder="Alice Johnson"
+            required
+            minlength="2"
+            maxlength="100"
+            autocomplete="name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="register-email">Email Address</label>
+          <input
+            id="register-email"
+            class="input-field"
+            type="email"
+            name="email"
+            placeholder="alice@company.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <div class="input-wrapper">
+            <input
+              id="register-password"
+              class="input-field"
+              type="password"
+              name="password"
+              placeholder="Min. 8 characters"
+              required
+              minlength="8"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-pwd-btn" data-target="register-password">Show</button>
+          </div>
+          <p class="field-hint">Must be 8+ characters with at least 1 uppercase letter and 1 number.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="register-confirm-password">Confirm Password</label>
+          <div class="input-wrapper">
+            <input
+              id="register-confirm-password"
+              class="input-field"
+              type="password"
+              name="confirmPassword"
+              placeholder="Re-enter password"
+              required
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-pwd-btn" data-target="register-confirm-password">Show</button>
+          </div>
+        </div>
+
+        <button id="register-submit-btn" class="submit-btn" type="submit">
+          <span>Create Account</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="auth-footer">
+      <span id="footer-switch-text">Don't have an account?</span>
+      <a id="footer-switch-link" href="#">Sign up here</a>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/auth.js"></script>
+</body>
+</html>
