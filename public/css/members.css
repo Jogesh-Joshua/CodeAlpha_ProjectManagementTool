@@ -346,3 +346,146 @@
   background: rgba(239, 68, 68, 0.15);
   border-color: rgba(239, 68, 68, 0.4);
 }
+
+/* ── Light Theme Adaptations for Members Page ───────────────── */
+[data-theme="light"] .project-summary-header {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .project-header-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .project-header-desc {
+  color: #64748B;
+}
+
+[data-theme="light"] .stat-pill {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .stat-pill-val {
+  color: #0F172A;
+}
+
+[data-theme="light"] .stat-pill-label {
+  color: #64748B;
+}
+
+[data-theme="light"] .members-table {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .members-table th {
+  background: #F8FAFC;
+  color: #64748B;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .members-table td {
+  border-bottom: 1px solid #F1F5F9;
+  color: #0F172A;
+}
+
+[data-theme="light"] .members-table tr:hover {
+  background: #F8FAFC;
+}
+
+[data-theme="light"] .member-full-name {
+  color: #0F172A;
+}
+
+[data-theme="light"] .member-email-sub {
+  color: #64748B;
+}
+
+[data-theme="light"] .table-role-select {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+}
+
+[data-theme="light"] .table-role-select option {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+[data-theme="light"] .btn-remove-member {
+  background: #FFFFFF;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+}
+
+[data-theme="light"] .btn-remove-member:hover {
+  background: #FEF2F2;
+  border-color: #F87171;
+}
+
+[data-theme="light"] .user-search-results {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .user-search-item {
+  color: #0F172A;
+}
+
+[data-theme="light"] .user-search-item:hover {
+  background: #F1F5F9;
+}
+
+[data-theme="light"] .autocomplete-dropdown {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .autocomplete-item {
+  border-bottom: 1px solid #F1F5F9;
+  color: #0F172A;
+}
+
+[data-theme="light"] .autocomplete-item:hover {
+  background: #F1F5F9;
+}
+
+[data-theme="light"] .autocomplete-name {
+  color: #0F172A;
+}
+
+[data-theme="light"] .autocomplete-email {
+  color: #64748B;
+}
+
+[data-theme="light"] .role-select {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+}
+
+[data-theme="light"] .role-select option {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+[data-theme="light"] .breadcrumb-link {
+  color: #64748B;
+}
+
+[data-theme="light"] .breadcrumb-link:hover {
+  color: #0F172A;
+}
+
+[data-theme="light"] .breadcrumb-current {
+  color: #0F172A;
+}
+
+[data-theme="light"] .breadcrumb-separator {
+  color: #94A3B8;
+}

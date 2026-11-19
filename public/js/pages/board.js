@@ -186,7 +186,7 @@ function populateAssigneeChecklists() {
   const renderChecklist = (container, prefix) => {
     if (!container) return;
     if (projectMembers.length === 0) {
-      container.innerHTML = `<span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">No members in project.</span>`;
+      container.innerHTML = `<span style="font-size: 0.8rem; color: var(--theme-text-muted, #94A3B8);">No members in project.</span>`;
       return;
     }
 
@@ -258,7 +258,7 @@ function renderBoard() {
 
     if (filteredList.length === 0) {
       columnContainer.innerHTML = `
-        <div style="text-align: center; padding: 2rem 1rem; color: rgba(255,255,255,0.3); font-size: 0.825rem; font-style: italic;">
+        <div style="text-align: center; padding: 2rem 1rem; color: var(--theme-text-muted, #94A3B8); font-size: 0.825rem; font-style: italic;">
           No tasks in this column.
         </div>
       `;

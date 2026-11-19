@@ -1,36 +1,160 @@
 /* ============================================================
-   Orbit — CSS Design Tokens (Phase 0 scaffold)
-   Full design system will be built in Phase 7.
+   Orbit — CSS Design Tokens & Theme System
+   Global Dark Mode Default with Light Mode Support
    ============================================================ */
 
+/* ── Canonical Dark Theme (Default) ────────────────────────── */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --theme-bg:                  #0F1117; /* Deep charcoal / near-black */
+  --theme-sidebar-bg:          #151821; /* Differentiated sidebar surface */
+  --theme-header-bg:           #151821; /* Top header surface */
+  --theme-surface:             #181B24; /* Elevated cards */
+  --theme-surface-hover:       #1E222D; /* Card hover state */
+  --theme-surface-subtle:      #12141C; /* Inset panels & subtle groups */
+  --theme-surface-elevated:    #222634; /* Menus, popovers, dropdowns */
+  --theme-modal-bg:            #181B24; /* Modal surface */
+  --theme-column-bg:           #161923; /* Kanban columns */
+
+  /* Borders */
+  --theme-border:              rgba(255, 255, 255, 0.08);
+  --theme-border-subtle:       rgba(255, 255, 255, 0.05);
+  --theme-border-strong:       rgba(255, 255, 255, 0.16);
+
+  /* Typography */
+  --theme-text-primary:        #F8FAFC;
+  --theme-text-secondary:      #94A3B8;
+  --theme-text-muted:          #64748B;
+  --theme-text-inverse:        #0F172A;
+
+  /* Inputs & Form Controls */
+  --theme-input-bg:            #12141C;
+  --theme-input-border:        rgba(255, 255, 255, 0.12);
+  --theme-input-text:          #F8FAFC;
+  --theme-input-placeholder:   #64748B;
+  --theme-input-focus-border:  #6366F1;
+
+  /* Navigation */
+  --theme-nav-item:            #94A3B8;
+  --theme-nav-item-hover:      #F8FAFC;
+  --theme-nav-item-hover-bg:   rgba(255, 255, 255, 0.05);
+  --theme-nav-item-active-bg:  rgba(99, 102, 241, 0.15);
+  --theme-nav-item-active-txt: #A5B4FC;
+
+  /* Theme Switcher Button */
+  --theme-toggle-bg:           rgba(255, 255, 255, 0.06);
+  --theme-toggle-border:       rgba(255, 255, 255, 0.12);
+  --theme-toggle-color:        #F8FAFC;
+  --theme-toggle-hover-bg:     rgba(255, 255, 255, 0.12);
+  --theme-toggle-hover-color:  #FFFFFF;
+
+  /* Shadows */
+  --theme-shadow-card:         0 2px 8px rgba(0, 0, 0, 0.35);
+  --theme-shadow-modal:        0 24px 64px rgba(0, 0, 0, 0.65);
+  --theme-shadow-dropdown:     0 12px 32px rgba(0, 0, 0, 0.5);
+
+  /* Loading Skeletons */
+  --theme-skeleton-start:      #181B24;
+  --theme-skeleton-mid:        #252936;
+
+  /* Legacy Design System Tokens mapped to dark mode */
+  --orbit-slate-900:           #0F1117;
+  --orbit-slate-800:           #1A1D27;
+  --orbit-slate-700:           #252836;
+  --orbit-slate-600:           #363A4F;
+  --orbit-slate-100:           #0F1117;
+  --orbit-white:               #FFFFFF;
+}
+
+/* ── Crisp Light Theme ─────────────────────────────────────── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --theme-bg:                  #F8FAFC; /* Slate 50 */
+  --theme-sidebar-bg:          #FFFFFF; /* Pure white sidebar */
+  --theme-header-bg:           #FFFFFF; /* Pure white header */
+  --theme-surface:             #FFFFFF; /* White cards */
+  --theme-surface-hover:       #F1F5F9; /* Slate 100 hover */
+  --theme-surface-subtle:      #F8FAFC; /* Subtle nested containers */
+  --theme-surface-elevated:    #FFFFFF; /* Popovers & menus */
+  --theme-modal-bg:            #FFFFFF; /* Modals */
+  --theme-column-bg:           #F1F5F9; /* Kanban columns */
+
+  /* Borders */
+  --theme-border:              #E2E8F0; /* Slate 200 */
+  --theme-border-subtle:       #EDF2F7;
+  --theme-border-strong:       #CBD5E1; /* Slate 300 */
+
+  /* Typography */
+  --theme-text-primary:        #0F172A; /* Slate 900 */
+  --theme-text-secondary:      #475569; /* Slate 600 */
+  --theme-text-muted:          #94A3B8; /* Slate 400 */
+  --theme-text-inverse:        #FFFFFF;
+
+  /* Inputs & Form Controls */
+  --theme-input-bg:            #FFFFFF;
+  --theme-input-border:        #CBD5E1;
+  --theme-input-text:          #0F172A;
+  --theme-input-placeholder:   #94A3B8;
+  --theme-input-focus-border:  #5B5BD6;
+
+  /* Navigation */
+  --theme-nav-item:            #475569;
+  --theme-nav-item-hover:      #0F172A;
+  --theme-nav-item-hover-bg:   #F1F5F9;
+  --theme-nav-item-active-bg:  #EEF2FF;
+  --theme-nav-item-active-txt: #4338CA;
+
+  /* Theme Switcher Button */
+  --theme-toggle-bg:           rgba(0, 0, 0, 0.04);
+  --theme-toggle-border:       rgba(0, 0, 0, 0.1);
+  --theme-toggle-color:        #475569;
+  --theme-toggle-hover-bg:     rgba(0, 0, 0, 0.08);
+  --theme-toggle-hover-color:  #0F172A;
+
+  /* Shadows */
+  --theme-shadow-card:         0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --theme-shadow-modal:        0 20px 48px rgba(15, 23, 42, 0.16);
+  --theme-shadow-dropdown:     0 10px 25px rgba(15, 23, 42, 0.1);
+
+  /* Loading Skeletons */
+  --theme-skeleton-start:      #E2E8F0;
+  --theme-skeleton-mid:        #F1F5F9;
+
+  /* Legacy Design System Tokens mapped to light mode */
+  --orbit-slate-900:           #F8FAFC;
+  --orbit-slate-800:           #FFFFFF;
+  --orbit-slate-700:           #E2E8F0;
+  --orbit-slate-600:           #CBD5E1;
+  --orbit-slate-100:           #F8FAFC;
+  --orbit-white:               #0F172A;
+}
+
+/* ── Brand, Semantic & Shared Tokens ───────────────────────── */
 :root {
   /* Brand palette */
   --orbit-indigo:       #5B5BD6;
   --orbit-indigo-dark:  #4747C2;
   --orbit-indigo-light: #818CF8;
 
-  /* Surfaces */
-  --orbit-slate-900:    #0F1117;
-  --orbit-slate-800:    #1A1D27;
-  --orbit-slate-700:    #252836;
-  --orbit-slate-600:    #363A4F;
-  --orbit-slate-100:    #F4F5F7;
-  --orbit-white:        #FFFFFF;
-
   /* Semantic */
-  --orbit-success:      #22C55E;
+  --orbit-success:      #10B981;
   --orbit-warning:      #F59E0B;
   --orbit-danger:       #EF4444;
   --orbit-info:         #3B82F6;
 
   /* Priority badges */
-  --priority-low:       #22C55E;
+  --priority-low:       #10B981;
   --priority-medium:    #F59E0B;
   --priority-high:      #EF4444;
   --priority-critical:  #7C3AED;
 
   /* Typography */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Spacing scale */
@@ -49,13 +173,71 @@
   --radius-xl: 24px;
 
   /* Shadows */
-  --shadow-card: 0 2px 8px rgba(0,0,0,0.12);
-  --shadow-modal: 0 24px 64px rgba(0,0,0,0.3);
+  --shadow-card: var(--theme-shadow-card);
+  --shadow-modal: var(--theme-shadow-modal);
 
   /* Transitions */
-  --transition-fast: 0.12s ease;
+  --transition-fast: 0.15s ease;
   --transition-base: 0.2s ease;
+  --transition-theme: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
   /* Sidebar */
   --sidebar-width: 260px;
+}
+
+/* ── Universal Theme Toggle Component ──────────────────────── */
+.btn-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid var(--theme-toggle-border);
+  background-color: var(--theme-toggle-bg);
+  color: var(--theme-toggle-color);
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.btn-theme-toggle:hover {
+  background-color: var(--theme-toggle-hover-bg);
+  color: var(--theme-toggle-hover-color);
+  border-color: var(--theme-border-strong);
+  transform: translateY(-1px);
+}
+
+.btn-theme-toggle:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.btn-theme-toggle:focus-visible {
+  outline: 2px solid var(--orbit-indigo);
+  outline-offset: 2px;
+}
+
+.btn-theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  transition: transform var(--transition-fast);
+}
+
+.btn-theme-toggle:hover svg {
+  transform: rotate(15deg);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .btn-theme-toggle,
+  .btn-theme-toggle svg {
+    transition: none !important;
+    transform: none !important;
+  }
 }

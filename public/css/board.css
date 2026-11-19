@@ -599,3 +599,224 @@
   border: 1px dashed rgba(255, 255, 255, 0.08);
   border-radius: 8px;
 }
+
+/* ── Light Theme Adaptations for Kanban Board ───────────────── */
+[data-theme="light"] .board-viewport {
+  background-color: var(--theme-bg, #F8FAFC);
+}
+
+[data-theme="light"] .board-header {
+  background: var(--theme-header-bg, #FFFFFF);
+  border-bottom: 1px solid var(--theme-border, #E2E8F0);
+}
+
+[data-theme="light"] .board-breadcrumb {
+  color: #94A3B8;
+}
+
+[data-theme="light"] .board-breadcrumb a {
+  color: #64748B;
+}
+
+[data-theme="light"] .board-breadcrumb a:hover {
+  color: #0F172A;
+}
+
+[data-theme="light"] .board-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .board-search-input {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+}
+
+[data-theme="light"] .board-search-input:focus {
+  border-color: #5B5BD6;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(91, 91, 214, 0.15);
+}
+
+[data-theme="light"] .filter-select {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+}
+
+[data-theme="light"] .filter-select option {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+[data-theme="light"] .kanban-column {
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .kanban-column.drag-over {
+  border-color: #5B5BD6;
+  background-color: #EEF2FF;
+}
+
+[data-theme="light"] .column-header {
+  border-bottom: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .column-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .column-count-badge {
+  background: #E2E8F0;
+  color: #475569;
+}
+
+[data-theme="light"] .btn-add-task-column {
+  color: #64748B;
+}
+
+[data-theme="light"] .btn-add-task-column:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+[data-theme="light"] .task-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .task-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .task-card-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .task-card-title:hover {
+  color: #4338CA;
+}
+
+[data-theme="light"] .task-card-desc {
+  color: #64748B;
+}
+
+[data-theme="light"] .task-card-meta {
+  border-top: 1px solid #F1F5F9;
+}
+
+[data-theme="light"] .task-due-date {
+  color: #64748B;
+}
+
+[data-theme="light"] .task-assignee-avatar {
+  border-color: #FFFFFF;
+}
+
+[data-theme="light"] .btn-card-micro {
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #475569;
+}
+
+[data-theme="light"] .btn-card-micro:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+[data-theme="light"] .btn-card-micro.danger:hover {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-color: #FCA5A5;
+}
+
+[data-theme="light"] .assignee-checklist {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .assignee-check-item:hover {
+  background: #F1F5F9;
+}
+
+[data-theme="light"] .task-detail-meta-grid {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .detail-meta-label {
+  color: #64748B;
+}
+
+[data-theme="light"] .detail-meta-val {
+  color: #0F172A;
+}
+
+[data-theme="light"] .detail-description-block h4 {
+  color: #64748B;
+}
+
+[data-theme="light"] .detail-desc-content {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #334155;
+}
+
+[data-theme="light"] .detail-comments-section {
+  border-top: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .comments-header-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .comment-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+}
+
+[data-theme="light"] .comment-card:hover {
+  border-color: #CBD5E1;
+}
+
+[data-theme="light"] .comment-author {
+  color: #0F172A;
+}
+
+[data-theme="light"] .comment-time {
+  color: #94A3B8;
+}
+
+[data-theme="light"] .comment-body-text {
+  color: #334155;
+}
+
+[data-theme="light"] .btn-delete-comment {
+  color: #94A3B8;
+}
+
+[data-theme="light"] .btn-delete-comment:hover {
+  color: #EF4444;
+  background: #FEF2F2;
+}
+
+[data-theme="light"] .comment-form-textarea {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+}
+
+[data-theme="light"] .comment-form-textarea:focus {
+  border-color: #5B5BD6;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(91, 91, 214, 0.15);
+}
+
+[data-theme="light"] .comment-empty-state {
+  color: #94A3B8;
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+}

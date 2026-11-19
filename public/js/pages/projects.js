@@ -195,7 +195,7 @@ function renderSidebarProjects(projects) {
   if (!sidebarList) return;
 
   if (projects.length === 0) {
-    sidebarList.innerHTML = `<span style="font-size: 0.75rem; color: rgba(255,255,255,0.3); padding-left: 0.75rem;">No projects yet</span>`;
+    sidebarList.innerHTML = `<span style="font-size: 0.75rem; color: var(--theme-text-muted, #94A3B8); padding-left: 0.75rem;">No projects yet</span>`;
     return;
   }
 
@@ -273,7 +273,7 @@ function renderProjects(projects) {
           </div>
 
           <div class="card-actions">
-            <a href="/projects/${p.id}/board" class="btn-card-action" title="Open Kanban Board" style="color: #A5B4FC; border-color: rgba(99,102,241,0.3);">
+            <a href="/projects/${p.id}/board" class="btn-card-action btn-card-action-board" title="Open Kanban Board">
               <span>📋</span> Board
             </a>
             <a href="/projects/${p.id}/members" class="btn-card-action" title="Manage Team Members">

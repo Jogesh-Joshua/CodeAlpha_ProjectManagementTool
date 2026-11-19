@@ -207,7 +207,7 @@ function renderMembersTable(members) {
   if (members.length === 0) {
     membersTableBody.innerHTML = `
       <tr>
-        <td colspan="4" style="text-align: center; padding: 2rem; color: rgba(255,255,255,0.4);">
+        <td colspan="4" style="text-align: center; padding: 2rem; color: var(--theme-text-muted, #94A3B8);">
           No members found in this project.
         </td>
       </tr>
@@ -260,7 +260,7 @@ function renderMembersTable(members) {
       >
         ${removeLabel}
       </button>
-    ` : `<span style="color: rgba(255,255,255,0.25); font-size: 0.8rem;">—</span>`;
+    ` : `<span style="color: var(--theme-text-muted, #94A3B8); font-size: 0.8rem;">—</span>`;
 
     return `
       <tr>
@@ -277,7 +277,7 @@ function renderMembersTable(members) {
             </div>
           </div>
         </td>
-        <td style="color: rgba(255,255,255,0.6);">${formatDate(m.joinedAt)}</td>
+        <td style="color: var(--theme-text-secondary, #64748B);">${formatDate(m.joinedAt)}</td>
         <td>${roleCell}</td>
         <td style="text-align: right;">${actionCell}</td>
       </tr>
@@ -404,7 +404,7 @@ async function handleUserSearch(e) {
       const body = await res.json();
       if (!body.success || !body.data.users || body.data.users.length === 0) {
         autocompleteDropdown.innerHTML = `
-          <div style="padding: 0.75rem 1rem; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
+          <div style="padding: 0.75rem 1rem; color: var(--theme-text-muted, #94A3B8); font-size: 0.8rem;">
             No registered users found matching "${escapeHtml(query)}".
           </div>
         `;

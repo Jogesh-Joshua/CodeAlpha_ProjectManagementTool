@@ -3,7 +3,56 @@
    Linear & Asana inspired aesthetic
    ============================================================ */
 
-:root {
+/* ── Canonical Dark Theme Tokens (Default) ───────────────────── */
+:root,
+[data-theme="dark"] {
+  --dash-bg: #0F1117;
+  --dash-surface: #181B24;
+  --dash-surface-hover: #1E222D;
+  --dash-surface-subtle: #12141C;
+  --dash-border: rgba(255, 255, 255, 0.08);
+  --dash-border-subtle: rgba(255, 255, 255, 0.05);
+  --dash-text-primary: #F8FAFC;
+  --dash-text-secondary: #94A3B8;
+  --dash-text-muted: #64748B;
+
+  --dash-brand: #5B5BD6;
+  --dash-brand-hover: #6366F1;
+  --dash-brand-subtle: rgba(99, 102, 241, 0.15);
+  --dash-brand-text: #A5B4FC;
+
+  --dash-success: #10B981;
+  --dash-success-subtle: rgba(16, 185, 129, 0.15);
+  --dash-success-text: #6EE7B7;
+
+  --dash-warning: #F59E0B;
+  --dash-warning-subtle: rgba(245, 158, 11, 0.15);
+  --dash-warning-text: #FCD34D;
+
+  --dash-danger: #EF4444;
+  --dash-danger-subtle: rgba(239, 68, 68, 0.15);
+  --dash-danger-text: #FCA5A5;
+
+  --dash-info: #3B82F6;
+  --dash-info-subtle: rgba(59, 130, 246, 0.15);
+  --dash-info-text: #93C5FD;
+
+  --dash-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --dash-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --dash-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --dash-shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.5);
+
+  --dash-radius-sm: 6px;
+  --dash-radius-md: 10px;
+  --dash-radius-lg: 14px;
+  --dash-radius-full: 9999px;
+
+  --dash-sidebar-width: 256px;
+  --dash-header-height: 64px;
+}
+
+/* ── Crisp Light Theme Tokens ───────────────────────────────── */
+[data-theme="light"] {
   --dash-bg: #F8FAFC;
   --dash-surface: #FFFFFF;
   --dash-surface-hover: #F1F5F9;
@@ -39,14 +88,6 @@
   --dash-shadow-card: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
   --dash-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
   --dash-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
-
-  --dash-radius-sm: 6px;
-  --dash-radius-md: 10px;
-  --dash-radius-lg: 14px;
-  --dash-radius-full: 9999px;
-  
-  --dash-sidebar-width: 256px;
-  --dash-header-height: 64px;
 }
 
 /* Base resets & layout */
@@ -1087,10 +1128,70 @@ body.dashboard-body {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+  background: linear-gradient(90deg, var(--theme-skeleton-start, #181B24) 25%, var(--theme-skeleton-mid, #252936) 50%, var(--theme-skeleton-start, #181B24) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: var(--dash-radius-sm);
+}
+
+[data-theme="light"] .skeleton {
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+  background-size: 200% 100%;
+}
+
+/* Dark mode tag badge overrides */
+[data-theme="dark"] .tag-status-pill.todo {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .tag-priority-pill.low {
+  background-color: rgba(16, 185, 129, 0.18);
+  color: #6EE7B7;
+}
+
+[data-theme="dark"] .tag-priority-pill.medium {
+  background-color: rgba(245, 158, 11, 0.18);
+  color: #FCD34D;
+}
+
+[data-theme="dark"] .tag-priority-pill.high {
+  background-color: rgba(239, 68, 68, 0.18);
+  color: #FCA5A5;
+}
+
+[data-theme="dark"] .tag-priority-pill.urgent,
+[data-theme="dark"] .tag-priority-pill.critical {
+  background-color: rgba(168, 85, 247, 0.18);
+  color: #D8B4FE;
+}
+
+[data-theme="dark"] .task-item:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .task-item-checkbox {
+  border-color: rgba(255, 255, 255, 0.25);
+  background-color: #12141C;
+}
+
+[data-theme="dark"] .project-card-stat {
+  background-color: #12141C;
+}
+
+[data-theme="dark"] .filter-select {
+  background-color: #12141C;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .filter-select option {
+  background-color: #181B24;
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .view-all-link:hover {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .skeleton-text {

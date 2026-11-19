@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orbit — Project Team Members</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('orbit-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="stylesheet" href="/css/variables.css" />
   <link rel="stylesheet" href="/css/reset.css" />
   <link rel="stylesheet" href="/css/base.css" />
@@ -19,6 +25,7 @@
           <div class="logo-icon">🪐</div>
           <span>Orbit</span>
         </a>
+        <button id="theme-toggle" class="btn-theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode"></button>
       </div>
 
       <nav class="sidebar-nav">
@@ -143,6 +150,7 @@
     </div>
   </div>
 
+  <script src="/js/theme.js"></script>
   <script type="module" src="/js/pages/members.js"></script>
 </body>
 </html>

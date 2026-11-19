@@ -4,12 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orbit — Sign In or Register</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('orbit-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="stylesheet" href="/css/variables.css" />
   <link rel="stylesheet" href="/css/reset.css" />
   <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/auth.css" />
 </head>
 <body class="auth-body">
+  <div class="auth-top-nav">
+    <button id="theme-toggle" class="btn-theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode"></button>
+  </div>
   <div class="auth-container">
     <div class="auth-brand">
       <a href="/" class="logo">🌌 Orbit</a>
@@ -169,6 +178,7 @@
     </div>
   </div>
 
+  <script src="/js/theme.js"></script>
   <script type="module" src="/js/pages/auth.js"></script>
 </body>
 </html>
