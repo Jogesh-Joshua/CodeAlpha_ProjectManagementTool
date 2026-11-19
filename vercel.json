@@ -11,8 +11,32 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/(.*)",
-      "destination": "/public/$1"
+      "source": "/login",
+      "destination": "/pages/auth.html?mode=login"
+    },
+    {
+      "source": "/register",
+      "destination": "/pages/auth.html?mode=register"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/pages/dashboard.html"
+    },
+    {
+      "source": "/projects",
+      "destination": "/pages/projects.html"
+    },
+    {
+      "source": "/projects/:id/members",
+      "destination": "/pages/members.html"
+    },
+    {
+      "source": "/projects/:id/board",
+      "destination": "/pages/board.html"
+    },
+    {
+      "source": "/board",
+      "destination": "/pages/board.html"
     }
   ]
 }
