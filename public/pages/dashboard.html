@@ -7,222 +7,311 @@
   <link rel="stylesheet" href="/css/variables.css" />
   <link rel="stylesheet" href="/css/reset.css" />
   <link rel="stylesheet" href="/css/base.css" />
-  <style>
-    body {
-      background-color: var(--orbit-slate-900, #0F1117);
-      color: #fff;
-      font-family: var(--font-sans);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .dashboard-header {
-      background: #1A1D27;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: 800;
-    }
-
-    .user-nav {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-
-    .user-profile {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .user-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--orbit-indigo, #5B5BD6);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    .user-details {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .user-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .user-email {
-      font-size: 0.775rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .logout-btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: rgba(255, 255, 255, 0.8);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm, 6px);
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition-fast, 0.12s);
-    }
-
-    .logout-btn:hover {
-      background: rgba(239, 68, 68, 0.15);
-      border-color: rgba(239, 68, 68, 0.4);
-      color: #FCA5A5;
-    }
-
-    .dashboard-main {
-      flex: 1;
-      padding: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .welcome-banner {
-      background: linear-gradient(135deg, rgba(91, 91, 214, 0.2) 0%, rgba(26, 29, 39, 0.9) 100%);
-      border: 1px solid rgba(91, 91, 214, 0.3);
-      border-radius: var(--radius-lg, 16px);
-      padding: 2.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .welcome-banner h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .welcome-banner p {
-      font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.5;
-    }
-
-    .status-card {
-      background: #1A1D27;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-lg, 16px);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.75rem;
-      background: rgba(34, 197, 94, 0.15);
-      color: #86EFAC;
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      width: fit-content;
-    }
-
-    .status-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: #22C55E;
-      border-radius: 50%;
-    }
-
-    .status-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-
-    .status-card p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.925rem;
-      line-height: 1.5;
-    }
-
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--orbit-indigo, #5B5BD6);
-      color: #FFFFFF;
-      padding: 0.65rem 1.25rem;
-      border-radius: var(--radius-sm, 6px);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      width: fit-content;
-      transition: background var(--transition-fast, 0.12s);
-    }
-
-    .cta-btn:hover {
-      background: var(--orbit-indigo-dark, #4747C2);
-    }
-  </style>
+  <link rel="stylesheet" href="/css/dashboard.css" />
 </head>
-<body>
-  <header class="dashboard-header">
-    <a href="/" class="brand">
-      <span>🌌</span> Orbit
-    </a>
+<body class="dashboard-body">
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
 
-    <div class="user-nav">
-      <a href="/projects" class="logout-btn" style="background: rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.4); color: #A5B4FC; text-decoration: none;">
-        📁 Projects
-      </a>
-      <div id="user-profile" class="user-profile" style="display: none;">
-        <div id="user-avatar" class="user-avatar">?</div>
-        <div class="user-details">
-          <span id="user-name" class="user-name">Loading...</span>
-          <span id="user-email" class="user-email">...</span>
-        </div>
+  <div class="dashboard-layout">
+    <!-- Left Sidebar -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Main Navigation">
+      <div class="sidebar-header">
+        <a href="/dashboard" class="sidebar-brand">
+          <div class="brand-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3" />
+              <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-30 12 12)" />
+            </svg>
+          </div>
+          <span>Orbit</span>
+          <span class="brand-badge">Workspace</span>
+        </a>
       </div>
-      <button id="logout-btn" class="logout-btn" type="button">Sign Out</button>
-    </div>
-  </header>
 
-  <main class="dashboard-main">
-    <section class="welcome-banner">
-      <h1 id="welcome-title">Welcome to Orbit</h1>
-      <p>Your collaborative workspace foundation is online. Plan together. Build better. Move forward.</p>
-    </section>
+      <nav class="sidebar-nav">
+        <div class="nav-group-title">Workspace</div>
+        <a href="/dashboard" class="nav-item active" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="9" rx="1" />
+              <rect x="14" y="3" width="7" height="5" rx="1" />
+              <rect x="14" y="12" width="7" height="9" rx="1" />
+              <rect x="3" y="16" width="7" height="5" rx="1" />
+            </svg>
+          </span>
+          <span>Dashboard</span>
+        </a>
+        <a href="/projects" class="nav-item">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" />
+            </svg>
+          </span>
+          <span>Projects</span>
+        </a>
 
-    <div class="status-card">
-      <div class="status-badge">Workspace Active</div>
-      <h3>Collaborative Project Management</h3>
-      <p>
-        Manage team projects, organize tasks across visual Kanban boards, collaborate through task comments, and manage team access with role-based permissions.
-      </p>
-      <a href="/projects" class="cta-btn">Go to Projects &rarr;</a>
+        <div class="nav-group-title" style="margin-top: 1rem;">Views</div>
+        <a href="/projects" class="nav-item" id="nav-quick-all-projects">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </span>
+          <span>All Boards</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar User Profile & Sign Out -->
+      <div class="sidebar-user-panel" id="sidebar-user-panel">
+        <div class="user-profile-summary">
+          <div class="user-avatar-circle" id="user-avatar" aria-hidden="true">?</div>
+          <div class="user-text-info">
+            <span class="user-display-name" id="user-name">Loading...</span>
+            <span class="user-display-email" id="user-email">...</span>
+          </div>
+        </div>
+        <button class="btn-signout" id="logout-btn" type="button" title="Sign out" aria-label="Sign out">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Viewport -->
+    <div class="dashboard-viewport">
+      <!-- Top App Header -->
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+          <div class="breadcrumbs">
+            <span class="breadcrumb-root">Workspace</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a href="/projects" class="btn-header-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" />
+            </svg>
+            <span>View Projects</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Dashboard Main View -->
+      <main class="dashboard-main">
+        <!-- Section A: Welcome Header -->
+        <section class="welcome-hero" aria-labelledby="welcome-title">
+          <div class="welcome-info">
+            <h1 class="welcome-title" id="welcome-title">Good day, ...</h1>
+            <p class="welcome-subtitle">Here's what's happening across your workspace.</p>
+          </div>
+          <a href="/projects" class="welcome-cta">
+            <span>Explore Projects</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+        </section>
+
+        <!-- Section B: 4 Overview Metric Cards -->
+        <section class="metrics-grid" aria-label="Workspace Metrics">
+          <!-- Metric 1: Active Projects -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-label">Active Projects</span>
+              <div class="metric-icon-wrap projects" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" />
+                </svg>
+              </div>
+            </div>
+            <div class="metric-value" id="metric-projects-count">
+              <div class="skeleton skeleton-metric"></div>
+            </div>
+            <span class="metric-subtext">Active workspaces</span>
+          </div>
+
+          <!-- Metric 2: Open Tasks -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-label">Open Tasks</span>
+              <div class="metric-icon-wrap open" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 14 14" />
+                </svg>
+              </div>
+            </div>
+            <div class="metric-value" id="metric-open-tasks-count">
+              <div class="skeleton skeleton-metric"></div>
+            </div>
+            <span class="metric-subtext">Awaiting completion</span>
+          </div>
+
+          <!-- Metric 3: In Progress -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-label">In Progress</span>
+              <div class="metric-icon-wrap in-progress" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4" />
+                  <path d="M12 18v4" />
+                  <path d="M4.93 4.93l2.83 2.83" />
+                  <path d="M16.24 16.24l2.83 2.83" />
+                  <path d="M2 12h4" />
+                  <path d="M18 12h4" />
+                  <path d="M4.93 19.07l2.83-2.83" />
+                  <path d="M16.24 7.76l2.83-2.83" />
+                </svg>
+              </div>
+            </div>
+            <div class="metric-value" id="metric-in-progress-count">
+              <div class="skeleton skeleton-metric"></div>
+            </div>
+            <span class="metric-subtext">Actively being worked on</span>
+          </div>
+
+          <!-- Metric 4: Completed Tasks -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-label">Completed</span>
+              <div class="metric-icon-wrap completed" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              </div>
+            </div>
+            <div class="metric-value" id="metric-completed-count">
+              <div class="skeleton skeleton-metric"></div>
+            </div>
+            <span class="metric-subtext">Tasks successfully delivered</span>
+          </div>
+        </section>
+
+        <!-- Section C: Main Workspace Grid (Two columns) -->
+        <section class="workspace-grid" aria-label="Projects and Tasks Overview">
+          <!-- Left Column: Recent Projects -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-header-title-wrap">
+                <h2 class="widget-title">Recent Projects</h2>
+              </div>
+              <a href="/projects" class="widget-action-link">
+                <span>View all</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </a>
+            </div>
+            <div class="widget-body" id="recent-projects-container">
+              <div class="skeleton skeleton-card"></div>
+              <div class="skeleton skeleton-card"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: My Tasks -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-header-title-wrap">
+                <h2 class="widget-title">My Tasks</h2>
+                <span class="widget-counter" id="my-tasks-count">0</span>
+              </div>
+              <a href="/projects" class="widget-action-link">
+                <span>Go to board</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </a>
+            </div>
+            <div class="widget-body" id="my-tasks-container">
+              <div class="skeleton skeleton-card"></div>
+              <div class="skeleton skeleton-card"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section D: Task Workflow Overview -->
+        <section class="workflow-overview-card" aria-labelledby="workflow-title">
+          <div class="workflow-header">
+            <div class="workflow-title-wrap">
+              <h2 class="workflow-title" id="workflow-title">Workflow Distribution</h2>
+              <p class="workflow-desc">Overview of all active tasks across workflow stages</p>
+            </div>
+            <span class="widget-counter" id="workflow-total-tasks">0 tasks</span>
+          </div>
+
+          <!-- Segmented distribution bar -->
+          <div class="workflow-distribution-bar" id="workflow-bar" aria-label="Task Distribution Bar">
+            <div class="workflow-seg todo" style="width: 25%;" title="To Do"></div>
+            <div class="workflow-seg in_progress" style="width: 25%;" title="In Progress"></div>
+            <div class="workflow-seg review" style="width: 25%;" title="Review"></div>
+            <div class="workflow-seg done" style="width: 25%;" title="Done"></div>
+          </div>
+
+          <!-- Legend & breakdown -->
+          <div class="workflow-legend-grid" id="workflow-legend">
+            <div class="workflow-legend-item">
+              <div class="legend-dot todo" aria-hidden="true"></div>
+              <div class="legend-info">
+                <span class="legend-name">To Do</span>
+                <span class="legend-count" id="legend-count-todo">0 (0%)</span>
+              </div>
+            </div>
+            <div class="workflow-legend-item">
+              <div class="legend-dot in_progress" aria-hidden="true"></div>
+              <div class="legend-info">
+                <span class="legend-name">In Progress</span>
+                <span class="legend-count" id="legend-count-in-progress">0 (0%)</span>
+              </div>
+            </div>
+            <div class="workflow-legend-item">
+              <div class="legend-dot review" aria-hidden="true"></div>
+              <div class="legend-info">
+                <span class="legend-name">In Review</span>
+                <span class="legend-count" id="legend-count-review">0 (0%)</span>
+              </div>
+            </div>
+            <div class="workflow-legend-item">
+              <div class="legend-dot done" aria-hidden="true"></div>
+              <div class="legend-info">
+                <span class="legend-name">Done</span>
+                <span class="legend-count" id="legend-count-done">0 (0%)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section E: Recent Activity Feed -->
+        <section class="activity-card" aria-labelledby="activity-title">
+          <div class="activity-header">
+            <h2 class="activity-title" id="activity-title">Recent Activity</h2>
+            <span class="widget-counter" id="activity-counter">0 events</span>
+          </div>
+          <div class="activity-list" id="activity-list">
+            <div class="skeleton skeleton-card"></div>
+          </div>
+        </section>
+      </main>
     </div>
-  </main>
+  </div>
 
   <script type="module" src="/js/pages/dashboard.js"></script>
 </body>
