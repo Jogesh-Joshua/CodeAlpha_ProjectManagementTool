@@ -104,6 +104,7 @@ CodeAlpha_ProjectManagementTool/
 | [PHASE_4_REPORT.md](docs/PHASE_4_REPORT.md) | Phase 4 execution report (Tasks & Kanban) |
 | [PHASE_5_REPORT.md](docs/PHASE_5_REPORT.md) | Phase 5 execution report (Task Comments) |
 | [FINAL_SUBMISSION_REPORT.md](docs/FINAL_SUBMISSION_REPORT.md) | Comprehensive CodeAlpha Task 3 Submission Report |
+| [FINAL_ACCEPTANCE_TEST_REPORT.md](docs/FINAL_ACCEPTANCE_TEST_REPORT.md) | Final Comprehensive Acceptance Test & Production Audit Report |
 
 ---
 

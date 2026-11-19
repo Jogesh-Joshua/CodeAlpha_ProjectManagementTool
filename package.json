@@ -9,6 +9,7 @@
     "migrate": "node scripts/migrate.js",
     "test": "node --test tests/**/*.test.js",
     "test:live": "node scripts/live-e2e-journey.js",
+    "test:browser": "node scripts/browser-check.js",
     "verify:db": "node scripts/verify-db.js",
     "lint": "echo \"Add ESLint in a future phase\""
   },
