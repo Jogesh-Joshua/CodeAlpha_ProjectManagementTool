@@ -166,6 +166,25 @@
       font-size: 0.925rem;
       line-height: 1.5;
     }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orbit-indigo, #5B5BD6);
+      color: #FFFFFF;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm, 6px);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      width: fit-content;
+      transition: background var(--transition-fast, 0.12s);
+    }
+
+    .cta-btn:hover {
+      background: var(--orbit-indigo-dark, #4747C2);
+    }
   </style>
 </head>
 <body>
@@ -196,12 +215,12 @@
     </section>
 
     <div class="status-card">
-      <div class="status-badge">Phase 2 Authenticated</div>
-      <h3>Authentication & Session Management Verified</h3>
+      <div class="status-badge">Workspace Active</div>
+      <h3>Collaborative Project Management</h3>
       <p>
-        Your session is securely authenticated using cryptographic HMAC-SHA256 tokens and signed HTTP-only cookies.
-        Project workspaces, role management, and Kanban boards will be activated in Phase 3 and Phase 4.
+        Manage team projects, organize tasks across visual Kanban boards, collaborate through task comments, and manage team access with role-based permissions.
       </p>
+      <a href="/projects" class="cta-btn">Go to Projects &rarr;</a>
     </div>
   </main>
 
