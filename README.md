@@ -19,6 +19,34 @@ Orbit is a collaborative project management web application inspired by modern t
 
 ---
 
+## Live Demo Account
+
+A dedicated, fully populated public demo workspace is provisioned for evaluators, reviewers, recruiters, and prospective users to explore Orbit without registering their own account:
+
+- **Live Production URL:** [https://code-alpha-project-management-tool-brown.vercel.app/](https://code-alpha-project-management-tool-brown.vercel.app/)
+- **Email:** `orbit.demo@example.com`
+- **Password:** `OrbitDemo!Workspace2026#Try`
+
+> **Quick Sign-In Tip:** On the deployed login page, click the **"Use Demo Account"** button to automatically fill in these credentials and sign in with one click.
+
+### Pre-populated Demo Workspace Contents
+- **Team:** 5 realistic sample team profiles (Alex Morgan — PM, Sarah Chen — UI/UX, Daniel Wilson — Frontend, Maya Patel — Backend, Ethan Brooks — QA)
+- **7 Projects:**
+  1. *Orbit Website Redesign*
+  2. *Mobile App Launch*
+  3. *Customer Portal Revamp*
+  4. *Q4 Marketing Campaign*
+  5. *API Performance Optimization*
+  6. *Internal Knowledge Base*
+  7. *Product Analytics Dashboard*
+- **56 Tasks:** Fully populated across all four workflow columns (`To Do`, `In Progress`, `In Review`, `Done`) with varied priorities (`low`, `medium`, `high`, `critical`), real assignees, and realistic due dates (overdue, due today, upcoming).
+- **Task Discussions:** 20+ realistic collaboration comments across multiple tasks.
+- **Seeding & Resetting Scripts:**
+  - `npm run seed:demo` — Additive, idempotent database seeding.
+  - `npm run seed:demo:reset` — Operator-only clean re-seed of the demo workspace.
+
+---
+
 ## Prerequisites
 
 - Node.js ≥ 26.0.0

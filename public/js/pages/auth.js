@@ -228,6 +228,27 @@ registerForm.addEventListener('submit', async (e) => {
   }
 });
 
+// Public Demo Workspace Helper
+const btnUseDemo = document.getElementById('btn-use-demo');
+if (btnUseDemo) {
+  btnUseDemo.addEventListener('click', () => {
+    // 1. Switch to login tab if in register mode
+    setMode('login');
+
+    // 2. Populate login fields
+    const emailInput = document.getElementById('login-email');
+    const passwordInput = document.getElementById('login-password');
+    if (emailInput && passwordInput) {
+      emailInput.value = 'orbit.demo@example.com';
+      passwordInput.value = 'OrbitDemo!Workspace2026#Try';
+
+      // 3. Highlight and focus for user review
+      showAlert('Demo credentials populated. Click "Sign In" to explore Orbit.', 'success');
+      passwordInput.focus();
+    }
+  });
+}
+
 // Initialize on page load
 const urlParams = new URLSearchParams(window.location.search);
 const initialMode = urlParams.get('mode') === 'register' ? 'register' : 'login';
